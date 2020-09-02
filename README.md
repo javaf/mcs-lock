@@ -11,7 +11,11 @@ queue. Corner cases are also takes care of.
 
 As each thread waits (spins) on its own "locked"
 field, this type of lock is suitable for
-cache-less NUMA architectures.
+cache-less NUMA architectures. The MCSLock is
+due to [John Mellor-Crummey] and [Michael Scott].
+
+[John Mellor-Crummey]: https://scholar.google.com/citations?user=wX0XpxMAAAAJ&hl=en
+[Michael Scott]: https://scholar.google.com/citations?user=PzaBy-UAAAAJ&hl=en
 
 ```java
 1. When thread wants to access critical
@@ -47,3 +51,4 @@ See [MCSLock.java] for code, [Main.java] for test, and [repl.it] for output.
 ### references
 
 - [The Art of Multiprocessor Programming :: Maurice Herlihy, Nir Shavit](https://dl.acm.org/doi/book/10.5555/2385452)
+- [Algorithms for scalable synchronization on shared-memory multiprocessors :: John M. Mellor-Crummey, Michael L. Scott](https://dl.acm.org/doi/10.1145/103727.103729)
