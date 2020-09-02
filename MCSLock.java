@@ -33,8 +33,9 @@ class MCSLock implements Lock {
     };
   }
 
-  // 1. When thread wants to access critical section,
-  //    it stands at the end of the queue (FIFO).
+  // 1. When thread wants to access critical
+  //    section, it stands at the end of the
+  //    queue (FIFO).
   // 2a. If there is no one in queue, it goes head
   //     with its critical section.
   // 2b. Otherwise, it locks itself and asks the
