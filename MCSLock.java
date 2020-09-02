@@ -47,7 +47,7 @@ class MCSLock implements Lock {
     if (m != null) {   // 2b
       n.locked = true; // 2b
       m.next = n;      // 2b
-      while(n.locked); // 2b
+      while(n.locked) Thread.yield(); // 2b
     } // 2a
   }
 
@@ -67,7 +67,7 @@ class MCSLock implements Lock {
     if (n.next == null) {               // 2b
       if (queue.compareAndSet(n, null)) // 2b
         return;                         // 2b
-      while(n.next == null);  // 2c
+      while(n.next == null) Thread.yield(); // 2c
     }                      // 2a
     n.next.locked = false; // 2a
     n.next = null;         // 2a
