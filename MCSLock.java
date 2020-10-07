@@ -1,5 +1,3 @@
-import java.util.concurrent.*;
-import java.util.concurrent.locks.*;
 import java.util.concurrent.atomic.*;
 
 // MCS Queue Lock maintains a linked-list for
@@ -18,7 +16,7 @@ import java.util.concurrent.atomic.*;
 // field, this type of lock is suitable for
 // cache-less NUMA architectures.
 
-class MCSLock implements Lock {
+class MCSLock extends AbstractLock {
   AtomicReference<QNode> queue;
   ThreadLocal<QNode> node;
   // queue: points to the tail
@@ -58,7 +56,7 @@ class MCSLock implements Lock {
   // 2a. If there is a thread standing behind,
   //     then it unlocks him.
   // 2b. Otherwise it tries to mark queue as empty.
-  //      If no one is joining, it leaves.
+  //     If no one is joining, it leaves.
   // 2c. If there is a thread trying to join the
   //     queue, it waits until he is done, and then
   //     unlocks him, and leaves.
@@ -72,27 +70,5 @@ class MCSLock implements Lock {
     }                      // 2a
     n.next.locked = false; // 2a
     n.next = null;         // 2a
-  }
-
-  @Override
-  public void lockInterruptibly() throws InterruptedException {
-    lock();
-  }
-
-  @Override
-  public boolean tryLock() {
-    lock();
-    return true;
-  }
-
-  @Override
-  public boolean tryLock(long arg0, TimeUnit arg1) throws InterruptedException {
-    lock();
-    return true;
-  }
-
-  @Override
-  public Condition newCondition() {
-    return null;
   }
 }

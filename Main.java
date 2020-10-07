@@ -1,5 +1,3 @@
-import java.util.function.*;
-
 class Main {
   static MCSLock lock;
   static double[] sharedData;
