@@ -1,5 +1,7 @@
+import java.util.concurrent.locks.*;
+
 class Main {
-  static MCSLock lock;
+  static Lock lock;
   static double[] sharedData;
   static int SD = 100, CS = 100, TH = 10;
   // SD: shared data srray size
