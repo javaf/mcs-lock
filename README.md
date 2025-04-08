@@ -59,3 +59,5 @@ See [MCSLock.java] for code, [Main.java] for test, and [repl.it] for output.
 
 - [The Art of Multiprocessor Programming :: Maurice Herlihy, Nir Shavit](https://dl.acm.org/doi/book/10.5555/2385452)
 - [Algorithms for scalable synchronization on shared-memory multiprocessors :: John M. Mellor-Crummey, Michael L. Scott](https://dl.acm.org/doi/10.1145/103727.103729)
+
+![](https://ga-beacon.deno.dev/G-G1E8HNDZYY:v51jklKGTLmC3LAZ4rJbIQ/github.com/javaf/mcs-lock)
